@@ -88,5 +88,5 @@ window.weddingConfig = {
     file: ""                 // e.g. "assets/music.mp3"
   },
 
-  siteUrl: ""
+  siteUrl: "https://ajish-sikha.vercel.app/"
 };
