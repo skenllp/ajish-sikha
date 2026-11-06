@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <script>document.documentElement.classList.add("js");</script>
+
+  <title>Ajish &amp; Sikha | Wedding Invitation | 14 January 2027</title>
+  <meta name="description" content="With joy in our hearts, we invite you to celebrate the wedding of Ajish &amp; Sikha on 14 January 2027." />
+  <meta name="theme-color" content="#2A1F1A" />
+  <meta name="color-scheme" content="light" />
+
+  <!-- Open Graph / WhatsApp preview.
+       After deploying, replace https://YOUR-DOMAIN.com with your real public address (see README.md). -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Ajish &amp; Sikha Wedding" />
+  <meta property="og:title" content="Ajish &amp; Sikha | Wedding Invitation | 14 January 2027" />
+  <meta property="og:description" content="With joy in our hearts, we invite you to celebrate the wedding of Ajish &amp; Sikha on 14 January 2027." />
+  <meta property="og:url" content="https://YOUR-DOMAIN.com/" />
+  <meta property="og:image" content="https://YOUR-DOMAIN.com/assets/og-preview.jpg" />
+  <meta property="og:image:secure_url" content="https://YOUR-DOMAIN.com/assets/og-preview.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="628" />
+  <meta property="og:image:alt" content="Ajish &amp; Sikha wedding invitation" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ajish &amp; Sikha | Wedding Invitation | 14 January 2027" />
+  <meta name="twitter:description" content="With joy in our hearts, we invite you to celebrate the wedding of Ajish &amp; Sikha on 14 January 2027." />
+  <meta name="twitter:image" content="https://YOUR-DOMAIN.com/assets/og-preview.jpg" />
+
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+  <link rel="preload" as="image" href="assets/garden-background.webp" type="image/webp" fetchpriority="high" media="(orientation: portrait)" />
+  <link rel="preload" as="image" href="assets/hero-desktop.webp" type="image/webp" fetchpriority="high" media="(orientation: landscape)" />
+  <link rel="preload" as="image" href="assets/groom-hand.webp" type="image/webp" />
+  <link rel="preload" as="image" href="assets/bride-hand.webp" type="image/webp" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Dancing+Script:wght@500&family=Gloock&family=Italiana&display=swap" />
+
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="js/config.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#rsvp">Skip to RSVP</a>
+
+  <button class="music-toggle" type="button" aria-label="Play background music" aria-pressed="false" hidden>
+    <svg class="icon icon-music-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+    <svg class="icon icon-music-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><path d="M2 2l20 20"/></svg>
+  </button>
+
+  <main>
+    <!-- =========================================================
+         1 + 2. HERO, then the CURTAIN reveal slides up over it
+         ========================================================= -->
+    <div class="hero-stack">
+      <section class="hero" id="home" aria-labelledby="hero-names">
+        <div class="hero-media" aria-hidden="true">
+          <div class="hero-bg"></div>
+          <div class="hero-hands">
+            <picture>
+              <source srcset="assets/groom-hand.webp" type="image/webp" />
+              <img src="assets/groom-hand.png" class="groom-hand" alt="" width="1600" height="624" decoding="async" fetchpriority="high" />
+            </picture>
+            <picture>
+              <source srcset="assets/bride-hand.webp" type="image/webp" />
+              <img src="assets/bride-hand.png" class="bride-hand" alt="" width="1600" height="624" decoding="async" fetchpriority="high" />
+            </picture>
+            <div class="touch-glow"></div>
+          </div>
+          <div class="hero-shade"></div>
+        </div>
+
+        <header class="site-nav">
+          <a class="nav-mark" href="#home" data-config="couple.monogram">A &amp; S</a>
+          <nav aria-label="Sections">
+            <ul>
+              <li><a href="#schedule">Schedule</a></li>
+              <li><a href="#rsvp">RSVP</a></li>
+              <li><a href="#countdown">Countdown</a></li>
+            </ul>
+          </nav>
+        </header>
+
+        <div class="hero-content">
+          <p class="hero-tagline" data-config="hero.tagline">We are finally getting married!</p>
+          <h1 class="hero-names" id="hero-names">
+            <span class="hn" data-config="couple.groom">Ajish</span>
+            <span class="hn-amp" aria-label="and">&amp;</span>
+            <span class="hn" data-config="couple.bride">Sikha</span>
+          </h1>
+        </div>
+
+        <div class="hero-meta">
+          <p class="hero-date" data-format="date-upper">14 JANUARY 2027</p>
+          <p class="hero-place"><span data-config="church.name">St. Joseph's Church</span> &middot; <span data-config="church.location">Thannipuzha, Kerala</span></p>
+          <a class="pill pill--glass" href="#rsvp">Kindly respond</a>
+        </div>
+
+        <a class="hero-cue" href="#journey" aria-label="Scroll down">
+          <span></span>
+        </a>
+      </section>
+
+      <section class="journey" id="journey" aria-labelledby="journey-title">
+        <div class="journey-sticky">
+          <div class="journey-backdrop" aria-hidden="true"></div>
+          <div class="journey-light" aria-hidden="true"></div>
+
+          <div class="journey-text">
+            <p class="eyebrow eyebrow--light"><span data-config="couple.groom">Ajish</span> &amp; <span data-config="couple.bride">Sikha</span></p>
+            <h2 class="journey-title" id="journey-title"><span>Our journey</span> <em>begins here</em></h2>
+            <p class="journey-invite">With joy in our hearts, we invite you to celebrate<br class="br-desk" /> the beginning of our life together.</p>
+          </div>
+
+          <div class="petals" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+
+          <div class="curtain curtain--left" aria-hidden="true"><div class="drape"></div></div>
+          <div class="curtain curtain--right" aria-hidden="true"><div class="drape"></div></div>
+          <div class="curtain-garland" aria-hidden="true">
+            <img class="garland garland--l" src="assets/floral-overlay.webp" alt="" width="700" height="766" decoding="async" />
+            <img class="garland garland--r" src="assets/floral-overlay.webp" alt="" width="700" height="766" decoding="async" />
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- =========================================================
+         3. A LOVE IN FIVE FRAMES — horizontal film strip
+         ========================================================= -->
+    <section class="story" id="story" aria-labelledby="story-title">
+      <div class="story-sticky">
+        <div class="film" aria-hidden="true"><span class="sprockets"></span></div>
+        <div class="story-viewport">
+          <div class="story-track" id="story-track">
+            <div class="story-intro">
+              <p class="eyebrow">Our story</p>
+              <h2 class="story-title" id="story-title">A Love in <em>Five Frames</em></h2>
+            </div>
+            <!-- frames are generated from weddingConfig.story -->
+          </div>
+        </div>
+        <div class="film film--bottom" aria-hidden="true"><span class="sprockets"></span></div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         4. RSVP — handmade paper on sage
+         ========================================================= -->
+    <section class="rsvp" id="rsvp" aria-labelledby="rsvp-heading">
+      <div class="rsvp-paper">
+        <img class="bouquet" id="bouquet" src="assets/floral-overlay.webp" alt="" width="700" height="766" loading="lazy" decoding="async" />
+
+        <div class="rsvp-inner">
+          <p class="eyebrow eyebrow--gold" data-format="date-upper">14 JANUARY 2027</p>
+          <h2 class="rsvp-title" id="rsvp-heading">Will you be<br />our guests?</h2>
+          <p class="rsvp-sub" id="rsvp-sub">We would love to celebrate with you.</p>
+          <p class="rsvp-notice" id="rsvp-notice" hidden role="note">RSVP submissions are not enabled yet. Please check back soon.</p>
+
+          <form class="rsvp-form" id="rsvp-form" novalidate>
+            <div class="row-2">
+              <div class="field">
+                <label for="rsvp-first">First name <span class="req" aria-hidden="true">*</span></label>
+                <input id="rsvp-first" name="firstName" type="text" autocomplete="given-name" autocapitalize="words" enterkeyhint="next" required aria-required="true" aria-describedby="err-first" maxlength="60" />
+                <p class="field-error" id="err-first" aria-live="polite"></p>
+              </div>
+              <div class="field">
+                <label for="rsvp-last">Last name <span class="req" aria-hidden="true">*</span></label>
+                <input id="rsvp-last" name="lastName" type="text" autocomplete="family-name" autocapitalize="words" enterkeyhint="next" required aria-required="true" aria-describedby="err-last" maxlength="60" />
+                <p class="field-error" id="err-last" aria-live="polite"></p>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="rsvp-email">Email address <span class="optional">(optional)</span></label>
+              <input id="rsvp-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" enterkeyhint="next" aria-describedby="err-email" maxlength="120" />
+              <p class="field-error" id="err-email" aria-live="polite"></p>
+            </div>
+
+            <fieldset class="field" id="attend-set" aria-describedby="err-attending">
+              <legend>Will you attend? <span class="req" aria-hidden="true">*</span></legend>
+              <div class="pills">
+                <label class="pill-choice"><input type="radio" name="attending" value="accepts" /><span>Joyfully accepts</span></label>
+                <label class="pill-choice"><input type="radio" name="attending" value="declines" /><span>Regretfully declines</span></label>
+              </div>
+              <p class="field-error" id="err-attending" aria-live="polite"></p>
+            </fieldset>
+
+            <fieldset class="field" id="party-set" hidden aria-describedby="err-party">
+              <legend>Are you coming with someone?</legend>
+              <div class="pills">
+                <label class="pill-choice"><input type="radio" name="party" value="1" checked /><span>Just me</span></label>
+                <label class="pill-choice"><input type="radio" name="party" value="2" /><span>Yes, +1</span></label>
+                <label class="pill-choice"><input type="radio" name="party" value="family" /><span>With family</span></label>
+              </div>
+              <div class="family-count" id="family-count" hidden>
+                <label for="rsvp-guests">Total guests, including you</label>
+                <div class="stepper">
+                  <button type="button" class="step" data-step="-1" aria-label="One fewer guest">&minus;</button>
+                  <input id="rsvp-guests" name="guests" type="number" inputmode="numeric" pattern="[0-9]*" min="1" max="10" step="1" value="3" aria-describedby="err-party" />
+                  <button type="button" class="step" data-step="1" aria-label="One more guest">+</button>
+                </div>
+              </div>
+              <p class="field-error" id="err-party" aria-live="polite"></p>
+            </fieldset>
+
+            <div class="field">
+              <label for="rsvp-message">Message to the couple <span class="optional">(optional)</span></label>
+              <textarea id="rsvp-message" name="message" rows="2" maxlength="1000"></textarea>
+            </div>
+
+            <div class="hp" aria-hidden="true">
+              <label for="rsvp-company">Company</label>
+              <input id="rsvp-company" name="_gotcha" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <div class="submit-row">
+              <button class="btn-dark" type="submit" id="rsvp-submit">
+                <span class="btn-label">Send RSVP</span>
+                <span class="spinner" aria-hidden="true"></span>
+              </button>
+            </div>
+            <p class="form-status" id="rsvp-status" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="ticket" id="rsvp-ticket" hidden tabindex="-1">
+            <p class="eyebrow eyebrow--gold" id="ticket-eyebrow">You're on the list!</p>
+            <p class="ticket-name" id="ticket-name"></p>
+            <p class="ticket-party" id="ticket-party"></p>
+            <p class="ticket-hint" id="ticket-hint">Show this QR code at the hall entrance</p>
+            <div class="ticket-card" id="ticket-card">
+              <div class="qr" id="ticket-qr" role="img" aria-label="Your entry QR code"></div>
+              <p class="ticket-foot"><span data-config="couple.groom">Ajish</span> &amp; <span data-config="couple.bride">Sikha</span> &middot; <span data-format="date-short">14 January 2027</span> &middot; <span data-config="church.name">St. Joseph's Church</span></p>
+            </div>
+            <button class="text-btn" type="button" id="rsvp-again">Send another response</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         5. ORDER OF CELEBRATION
+         ========================================================= -->
+    <section class="schedule" id="schedule" aria-labelledby="schedule-title">
+      <header class="sec-head" data-reveal>
+        <p class="eyebrow">The big day</p>
+        <h2 class="sec-title" id="schedule-title">Order of <em>Celebration</em></h2>
+        <div class="ornament" aria-hidden="true"><span></span><i></i><span></span></div>
+      </header>
+
+      <div class="dash">
+        <div class="dash-col dash-col--left">
+          <article class="card date-card" data-reveal>
+            <p class="card-label">Wedding date</p>
+            <div class="date-ring">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <circle class="ring-track" cx="60" cy="60" r="52" />
+                <circle class="ring-fill" id="ring-fill" cx="60" cy="60" r="52" />
+              </svg>
+              <div class="ring-text">
+                <span class="ring-day" id="ring-day">14</span>
+                <span class="ring-month" id="ring-month">JAN</span>
+              </div>
+            </div>
+            <p class="date-sub"><span id="ring-year">2027</span> &middot; <span id="ring-weekday">Thursday</span></p>
+            <button class="pill pill--outline" type="button" id="add-to-calendar">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>
+              Add to calendar
+            </button>
+            <a class="text-link" id="google-calendar" href="#" target="_blank" rel="noopener noreferrer">Google Calendar</a>
+          </article>
+
+          <article class="card glance-card" data-reveal>
+            <p class="card-label">At a glance</p>
+            <div class="glance-grid" id="glance-grid">
+              <div class="glance glance--rose"><strong id="glance-events">2</strong><span>Events</span></div>
+              <div class="glance glance--gold"><strong data-format="time-short" data-source="church.time">4:00</strong><span>Ceremony <em data-format="ampm" data-source="church.time">PM</em></span></div>
+              <div class="glance glance--sage"><strong data-format="time-short" data-source="reception.time">6:45</strong><span>Reception <em data-format="ampm" data-source="reception.time">PM</em></span></div>
+              <div class="glance glance--blush"><strong>IST</strong><span>India time</span></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="dash-col dash-col--mid">
+          <figure class="venue-figure" data-reveal>
+            <img id="venue-img" src="assets/garden-background.webp" alt="" width="941" height="1672" loading="lazy" decoding="async" />
+          </figure>
+
+          <article class="card venue-card" data-reveal>
+            <h3 class="venue-title" data-config="church.name">St. Joseph's Church</h3>
+            <p class="venue-sub"><span data-config="church.location">Thannipuzha, Kerala</span> &middot; <span data-format="date-upper">14 JANUARY 2027</span></p>
+            <ul class="tags">
+              <li class="tag tag--rose">Holy Matrimony</li>
+              <li class="tag tag--gold">Church Ceremony</li>
+              <li class="tag tag--sage">Wedding Reception</li>
+              <li class="tag tag--blush">Thursday Evening</li>
+            </ul>
+
+            <div class="venue-block">
+              <p class="card-label">Ceremony &middot; <span data-format="time" data-source="church.time">4:00 PM</span></p>
+              <p class="vb-name" data-config="church.name">St. Joseph's Church</p>
+              <p class="vb-line" data-config="church.location">Thannipuzha, Kerala</p>
+              <p class="vb-line" data-tbc="church.address" data-tbc-label="Full address: to be confirmed">Full address: to be confirmed</p>
+              <div class="map-action" data-map="church" data-label="Get directions">
+                <button class="btn-dark btn-dark--sm" type="button" disabled aria-disabled="true">Get directions <span aria-hidden="true">&nearr;</span></button>
+                <span class="map-note">Map link coming soon</span>
+              </div>
+            </div>
+
+            <div class="venue-block">
+              <p class="card-label">Reception &middot; <span data-format="time" data-source="reception.time">6:45 PM</span></p>
+              <p class="vb-name" data-tbc="reception.name" data-tbc-label="Venue to be confirmed">Venue to be confirmed</p>
+              <p class="vb-line" data-tbc="reception.address" data-tbc-label="Address to be confirmed">Address to be confirmed</p>
+              <div class="map-action" data-map="reception" data-label="Get directions">
+                <button class="btn-dark btn-dark--sm" type="button" disabled aria-disabled="true">Get directions <span aria-hidden="true">&nearr;</span></button>
+                <span class="map-note">Map link coming soon</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="dash-col dash-col--right">
+          <article class="card timeline-card" data-reveal>
+            <p class="card-label">Order of celebration</p>
+            <ol class="timeline" id="timeline"></ol>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         6. COUNTDOWN
+         ========================================================= -->
+    <section class="countdown" id="countdown" aria-labelledby="countdown-title">
+      <div class="cd-glow" aria-hidden="true"></div>
+      <header class="sec-head" data-reveal>
+        <p class="eyebrow eyebrow--olive">Save the date</p>
+        <h2 class="sec-title sec-title--olive" id="countdown-title">The Big Day is <em>Almost Here</em></h2>
+        <div class="ornament ornament--olive" aria-hidden="true"><span></span><i></i><span></span></div>
+        <p class="cd-line"><span data-format="date-upper">14 JANUARY 2027</span> &middot; <span class="up" data-config="church.name">St. Joseph's Church</span>, <span class="up">Thannipuzha</span></p>
+      </header>
+
+      <div class="cd-grid" id="countdown-grid" role="timer" aria-live="off" data-reveal>
+        <div class="cd-unit"><span class="cd-num" data-unit="days">00</span><span class="cd-label">Days</span></div>
+        <span class="cd-colon" aria-hidden="true"><i></i><i></i></span>
+        <div class="cd-unit"><span class="cd-num" data-unit="hours">00</span><span class="cd-label">Hours</span></div>
+        <span class="cd-colon" aria-hidden="true"><i></i><i></i></span>
+        <div class="cd-unit"><span class="cd-num" data-unit="minutes">00</span><span class="cd-label">Minutes</span></div>
+        <span class="cd-colon" aria-hidden="true"><i></i><i></i></span>
+        <div class="cd-unit"><span class="cd-num" data-unit="seconds">00</span><span class="cd-label">Seconds</span></div>
+      </div>
+      <p class="cd-done" id="countdown-done" hidden>Our forever has begun.</p>
+      <p class="cd-note">Until we say &ldquo;I do&rdquo; &middot; <span data-format="time" data-source="church.time">4:00 PM</span> India Standard Time</p>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       7. FOOTER — family blessings
+       ========================================================= -->
+  <footer class="site-footer" id="family" aria-labelledby="family-heading">
+    <p class="family-heading" id="family-heading" data-reveal>With love and blessings<br />from our families and siblings</p>
+    <ul class="sibling-list" id="sibling-list" hidden></ul>
+    <p class="foot-mark" data-config="couple.monogram" data-reveal>A &amp; S</p>
+    <p class="foot-date"><span data-format="date-upper">14 JANUARY 2027</span> &middot; <span class="up">Thannipuzha, Kerala</span></p>
+    <nav class="foot-nav" aria-label="Footer">
+      <a href="#schedule">Schedule</a>
+      <a href="#rsvp">RSVP</a>
+      <a href="#countdown">Countdown</a>
+    </nav>
+    <span class="foot-rule" aria-hidden="true"></span>
+    <p class="foot-small">Made with love &middot; <span data-config="couple.groom">Ajish</span> &amp; <span data-config="couple.bride">Sikha</span> 2027</p>
+  </footer>
+</body>
+</html>
