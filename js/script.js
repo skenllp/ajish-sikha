@@ -485,18 +485,53 @@
   function setupMusic() {
     var m = cfg.music || {}, btn = $(".music-toggle");
     if (!btn || !m.enabled || !hasValue(m.file)) return;
-    var audio = new Audio(); audio.src = m.file; audio.loop = true; audio.preload = "none"; audio.volume = 0.6;
+    var audio = new Audio(); audio.src = m.file; audio.loop = true; audio.preload = "none";
+    var target = typeof m.volume === "number" ? m.volume : 0.55;
     btn.hidden = false;
-    var sync = function (on) { btn.setAttribute("aria-pressed", on ? "true" : "false"); btn.setAttribute("aria-label", on ? "Mute background music" : "Play background music"); };
-    var play = function () { var p = audio.play(); if (p && p.then) p.then(function () { sync(true); }).catch(function () { sync(false); }); else sync(true); };
-    btn.addEventListener("click", function () { if (audio.paused) play(); else { audio.pause(); sync(false); } });
-    // Browsers only allow sound after a user gesture: start on the first tap anywhere
-    var firstGesture = function () { play(); window.removeEventListener("pointerdown", firstGesture); };
-    window.addEventListener("pointerdown", firstGesture, { once: true });
-    audio.addEventListener("error", function () { btn.hidden = true; });
+    btn.classList.add("is-inviting");
+    var userMuted = false, started = false;
+    var sync = function (on) {
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      btn.setAttribute("aria-label", on ? "Mute background music" : "Play background music");
+      if (on) btn.classList.remove("is-inviting");
+    };
+    var fadeIn = function () { // gentle 2-second fade so the song never starts abruptly
+      audio.volume = 0;
+      var t0 = performance.now();
+      (function step(now) {
+        var k = Math.min(1, (now - t0) / 2000);
+        audio.volume = target * k;
+        if (k < 1 && !audio.paused) requestAnimationFrame(step);
+      })(t0);
+    };
+    var play = function () {
+      var p = audio.play();
+      if (p && p.then) {
+        return p.then(function () { started = true; sync(true); fadeIn(); return true; })
+          .catch(function () { sync(false); return false; });
+      }
+      started = true; sync(true); fadeIn();
+      return Promise.resolve(true);
+    };
+    btn.addEventListener("click", function () {
+      if (audio.paused) { userMuted = false; play(); }
+      else { userMuted = true; audio.pause(); sync(false); }
+    });
+    // Browsers only allow sound after a real tap/click/key press (scrolling does not count),
+    // so the song starts on the guest's first interaction anywhere on the page.
+    var GESTURES = ["click", "touchend", "keydown"];
+    var firstGesture = function (e) {
+      if (btn.contains(e.target)) return cleanup(); // the button handles its own click
+      if (started || userMuted) return cleanup();
+      // keep listening if the browser refused (e.g. a touch that was really a scroll)
+      play().then(function (ok) { if (ok) cleanup(); });
+    };
+    var cleanup = function () { GESTURES.forEach(function (t) { window.removeEventListener(t, firstGesture, true); }); };
+    GESTURES.forEach(function (t) { window.addEventListener(t, firstGesture, true); });
+    audio.addEventListener("error", function () { btn.hidden = true; cleanup(); });
     document.addEventListener("visibilitychange", function () {
       if (document.hidden) { if (!audio.paused) { audio.pause(); music.resume = true; } }
-      else if (music.resume) { music.resume = false; audio.play().catch(function () {}); }
+      else if (music.resume && !userMuted) { music.resume = false; audio.play().catch(function () {}); }
     });
   }
 

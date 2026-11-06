@@ -84,8 +84,9 @@ window.weddingConfig = {
   },
 
   music: {
-    enabled: false,
-    file: ""                 // e.g. "assets/music.mp3"
+    enabled: true,
+    file: "assets/love-story.mp3", // starts on the guest's first tap; mute button bottom-right
+    volume: 0.55             // 0 – 1
   },
 
   siteUrl: "https://ajish-sikha.vercel.app/"
