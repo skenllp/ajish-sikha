@@ -103,7 +103,10 @@
         <div class="hero-meta">
           <p class="hero-date" data-format="date-upper">14 JANUARY 2027</p>
           <p class="hero-place"><span data-config="church.name">St. Joseph's Church</span> &middot; <span data-config="church.location">Thannipuzha, Kerala</span></p>
-          <a class="pill pill--glass" href="#rsvp">Kindly respond</a>
+          <a class="scroll-btn" id="scroll-down" href="#journey" aria-label="Scroll down to continue">
+            <span>Scroll down</span>
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v15M5.5 12.5 12 19l6.5-6.5"/></svg>
+          </a>
         </div>
 
         <a class="hero-cue" href="#journey" aria-label="Scroll down">
@@ -137,7 +140,7 @@
     </div>
 
     <!-- =========================================================
-         3. A LOVE IN FIVE FRAMES — horizontal film strip
+         3. OUR LOVE STORY — horizontal film strip
          ========================================================= -->
     <section class="story" id="story" aria-labelledby="story-title">
       <div class="story-sticky">
@@ -146,7 +149,7 @@
           <div class="story-track" id="story-track">
             <div class="story-intro">
               <p class="eyebrow">Our story</p>
-              <h2 class="story-title" id="story-title">A Love in <em>Five Frames</em></h2>
+              <h2 class="story-title" id="story-title">Our <em>Love Story</em></h2>
             </div>
             <!-- frames are generated from weddingConfig.story -->
           </div>
@@ -284,9 +287,9 @@
           <article class="card glance-card" data-reveal>
             <p class="card-label">At a glance</p>
             <div class="glance-grid" id="glance-grid">
-              <div class="glance glance--rose"><strong id="glance-events">2</strong><span>Events</span></div>
-              <div class="glance glance--gold"><strong data-format="time-short" data-source="church.time">4:00</strong><span>Ceremony <em data-format="ampm" data-source="church.time">PM</em></span></div>
-              <div class="glance glance--sage"><strong data-format="time-short" data-source="reception.time">6:45</strong><span>Reception <em data-format="ampm" data-source="reception.time">PM</em></span></div>
+              <div class="glance glance--rose"><strong id="glance-events">2</strong><span>Celebrations</span></div>
+              <div class="glance glance--gold"><strong data-format="time" data-source="church.time">4:00 PM</strong><span>Ceremony</span></div>
+              <div class="glance glance--sage"><strong data-format="time" data-source="reception.time">6:45 PM</strong><span>Reception</span></div>
               <div class="glance glance--blush"><strong>IST</strong><span>India time</span></div>
             </div>
           </article>

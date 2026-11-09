@@ -455,7 +455,8 @@
       var timeout = setTimeout(function () { if (controller) controller.abort(); }, 20000);
       fetch(endpoint, {
         method: "POST",
-        headers: { "Accept": "application/json", "Content-Type": "application/json" },
+        // text/plain keeps this a "simple" request, which Google Apps Script accepts without CORS preflight
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(payload),
         signal: controller ? controller.signal : undefined
       }).then(function (res) {
@@ -465,6 +466,11 @@
             throw new Error((d && d.errors && d.errors.map(function (x) { return x.message; }).join(" ")) || "Server responded with " + res.status);
           });
         }
+        return res.json().catch(function () { return {}; }).then(function (d) {
+          if (d && d.result === "error") throw new Error(d.message || "Sheet rejected the RSVP");
+          return d;
+        });
+      }).then(function () {
         // Success is shown only after the backend has confirmed
         if (store) try { store.setItem(KEY, JSON.stringify(data)); } catch (e) {}
         showTicket(data, true);
@@ -500,7 +506,7 @@
       var t0 = performance.now();
       (function step(now) {
         var k = Math.min(1, (now - t0) / 2000);
-        audio.volume = target * k;
+        audio.volume = Math.max(0, Math.min(1, target * k));
         if (k < 1 && !audio.paused) requestAnimationFrame(step);
       })(t0);
     };
@@ -519,7 +525,7 @@
     });
     // Browsers only allow sound after a real tap/click/key press (scrolling does not count),
     // so the song starts on the guest's first interaction anywhere on the page.
-    var GESTURES = ["click", "touchend", "keydown"];
+    var GESTURES = ["pointerup", "click", "touchend", "keydown"];
     var firstGesture = function (e) {
       if (btn.contains(e.target)) return cleanup(); // the button handles its own click
       if (started || userMuted) return cleanup();
@@ -532,6 +538,17 @@
     document.addEventListener("visibilitychange", function () {
       if (document.hidden) { if (!audio.paused) { audio.pause(); music.resume = true; } }
       else if (music.resume && !userMuted) { music.resume = false; audio.play().catch(function () {}); }
+    });
+  }
+
+  /* "Scroll down" arrow → glides to the second page (curtain reveal) */
+  function setupScrollDown() {
+    var b = $("#scroll-down"), target = $("#journey");
+    if (!b || !target) return;
+    b.addEventListener("click", function (e) {
+      e.preventDefault();
+      var y = target.getBoundingClientRect().top + window.pageYOffset;
+      try { window.scrollTo({ top: y, behavior: reduceMotion ? "auto" : "smooth" }); } catch (x) { window.scrollTo(0, y); }
     });
   }
 
@@ -594,7 +611,8 @@
     var story = $("#story");
     if (!story || story.hidden) return;
     if (!hasST || reduceMotion) { story.style.height = ""; return; }
-    story.style.height = (window.innerHeight + storyDistance()) + "px";
+    // sticky pane is var(--screen) tall (svh), so size against the same unit: no jump when the phone's toolbar hides
+    story.style.height = "calc(var(--screen) + " + storyDistance() + "px)";
   }
 
   function setupScroll() {
@@ -608,17 +626,22 @@
 
     if (!hasST || reduceMotion) return;
 
+    // Phones: the address bar showing/hiding fires resize events; ignore those so the page never re-lays out mid-scroll
+    var touch = window.matchMedia && window.matchMedia("(hover: none)").matches;
+    ScrollTrigger.config({ ignoreMobileResize: true });
+    var SCRUB = touch ? 0.25 : 0.7;
+
     // Hero darkens and drifts as the curtain scene slides over it
-    gsap.timeline({ scrollTrigger: { trigger: journey, start: "top bottom", end: "top top", scrub: 0.6 } })
+    gsap.timeline({ scrollTrigger: { trigger: journey, start: "top bottom", end: "top top", scrub: SCRUB } })
       .to(".hero-shade", { "--hero-dim": 0.6, ease: "none" }, 0)
       .to(".hero-bg", { scale: 1.12, ease: "none" }, 0)
       .to(".hero-content", { y: -70, opacity: 0.25, ease: "none" }, 0)
       .to(".hero-meta, .hero-cue", { opacity: 0, ease: "none" }, 0);
 
     // Curtains part → "Our journey begins here"
-    gsap.set(".journey-text", { opacity: 0, scale: 0.94, y: 30 });
+    gsap.set(".journey-text", { opacity: 0, scale: 0.94, y: 30, force3D: true });
     gsap.set(".drape", { "--swag": "0%" });
-    gsap.timeline({ scrollTrigger: { trigger: journey, start: "top top", end: "bottom bottom", scrub: 0.8, invalidateOnRefresh: true } })
+    gsap.timeline({ scrollTrigger: { trigger: journey, start: "top top", end: "bottom bottom", scrub: SCRUB, invalidateOnRefresh: true } })
       .to({}, { duration: 0.1 })
       .to(".drape", { scaleX: function () { return window.innerWidth < 700 ? 0.15 : 0.26; }, "--swag": "70%", ease: "power1.inOut", duration: 0.62 }, 0.1)
       .to(".garland--l", { xPercent: -14, yPercent: -6, ease: "none", duration: 0.62 }, 0.1)
@@ -633,7 +656,7 @@
       gsap.to("#story-track", {
         x: function () { return -storyDistance(); },
         ease: "none",
-        scrollTrigger: { trigger: story, start: "top top", end: "bottom bottom", scrub: 0.6, invalidateOnRefresh: true }
+        scrollTrigger: { trigger: story, start: "top top", end: "bottom bottom", scrub: SCRUB, invalidateOnRefresh: true }
       });
     }
 
@@ -655,20 +678,23 @@
 
   /* ===================== Init ===================== */
   function init() {
-    [bindConfig, buildStory, buildTimeline, setupCalendarActions, setupCountdown, setupRSVP, setupMusic].forEach(function (fn) {
+    [bindConfig, buildStory, buildTimeline, setupCalendarActions, setupCountdown, setupRSVP, setupMusic, setupScrollDown].forEach(function (fn) {
       try { fn(); } catch (e) { console.warn(e); }
     });
     try { layoutHero(); heroIntro(); } catch (e) { console.warn(e); if (heroHands) heroHands.classList.add("is-laid-out"); }
     try { sizeStory(); setupScroll(); } catch (e) { console.warn(e); root.classList.add("no-gsap"); }
 
-    var resizeTimer;
+    var resizeTimer, lastW = window.innerWidth;
     window.addEventListener("resize", function () {
+      // height-only changes (mobile toolbar) are ignored; only real width changes / rotation re-layout
+      if (window.innerWidth === lastW) return;
+      lastW = window.innerWidth;
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(function () {
         layoutHero();
         sizeStory();
         if (hasST) ScrollTrigger.refresh();
-      }, 150);
+      }, 200);
     });
     // Images in the film strip change its width once loaded
     window.addEventListener("load", function () { sizeStory(); if (hasST) ScrollTrigger.refresh(); });

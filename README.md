@@ -8,6 +8,7 @@ ajish-sikha-wedding/
 ├── index.html
 ├── css/style.css
 ├── js/config.js        ← every editable detail is here
+├── google-apps-script.gs ← paste into your Google Sheet (RSVP → Sheet)
 ├── js/script.js
 ├── assets/             ← optimised images (WebP plus PNG/JPG fallbacks)
 ├── IMAGE-PROMPTS.md    ← prompts for the extra images
