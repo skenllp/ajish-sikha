@@ -140,7 +140,97 @@
     </div>
 
     <!-- =========================================================
-         3. OUR LOVE STORY — horizontal film strip
+         3. VENUE & SCHEDULE
+         ========================================================= -->
+    <section class="schedule" id="schedule" aria-labelledby="schedule-title">
+      <header class="sec-head" data-reveal>
+        <p class="eyebrow">The big day</p>
+        <h2 class="sec-title" id="schedule-title">Order of <em>Celebration</em></h2>
+        <div class="ornament" aria-hidden="true"><span></span><i></i><span></span></div>
+      </header>
+
+      <div class="dash">
+        <div class="dash-col dash-col--left">
+          <article class="card date-card" data-reveal>
+            <p class="card-label">Wedding date</p>
+            <div class="date-ring">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <circle class="ring-track" cx="60" cy="60" r="52" />
+                <circle class="ring-fill" id="ring-fill" cx="60" cy="60" r="52" />
+              </svg>
+              <div class="ring-text">
+                <span class="ring-day" id="ring-day">14</span>
+                <span class="ring-month" id="ring-month">JAN</span>
+              </div>
+            </div>
+            <p class="date-sub"><span id="ring-year">2027</span> &middot; <span id="ring-weekday">Thursday</span></p>
+            <button class="pill pill--outline" type="button" id="add-to-calendar">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>
+              Add to calendar
+            </button>
+            <a class="text-link" id="google-calendar" href="#" target="_blank" rel="noopener noreferrer">Google Calendar</a>
+          </article>
+
+          <article class="card glance-card" data-reveal>
+            <p class="card-label">At a glance</p>
+            <div class="glance-grid" id="glance-grid">
+              <div class="glance glance--rose"><strong id="glance-events">2</strong><span>Celebrations</span></div>
+              <div class="glance glance--gold"><strong data-format="time" data-source="church.time">4:00 PM</strong><span>Ceremony</span></div>
+              <div class="glance glance--sage"><strong data-format="time" data-source="reception.time">6:45 PM</strong><span>Reception</span></div>
+              <div class="glance glance--blush"><strong>IST</strong><span>India time</span></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="dash-col dash-col--mid">
+          <figure class="venue-figure" data-reveal>
+            <img id="venue-img" src="assets/garden-background.webp" alt="" width="941" height="1672" loading="lazy" decoding="async" />
+          </figure>
+
+          <article class="card venue-card" data-reveal>
+            <h3 class="venue-title" data-config="church.name">St. Joseph's Church</h3>
+            <p class="venue-sub"><span data-config="church.location">Thannipuzha, Kerala</span> &middot; <span data-format="date-upper">14 JANUARY 2027</span></p>
+            <ul class="tags">
+              <li class="tag tag--rose">Holy Matrimony</li>
+              <li class="tag tag--gold">Church Ceremony</li>
+              <li class="tag tag--sage">Wedding Reception</li>
+              <li class="tag tag--blush">Thursday Evening</li>
+            </ul>
+
+            <div class="venue-block">
+              <p class="card-label">Ceremony &middot; <span data-format="time" data-source="church.time">4:00 PM</span></p>
+              <p class="vb-name" data-config="church.name">St. Joseph's Church</p>
+              <p class="vb-line" data-config="church.location">Thannipuzha, Kerala</p>
+              <p class="vb-line" data-tbc="church.address" data-tbc-label="Full address: to be confirmed">Full address: to be confirmed</p>
+              <div class="map-action" data-map="church" data-label="Get directions">
+                <button class="btn-dark btn-dark--sm" type="button" disabled aria-disabled="true">Get directions <span aria-hidden="true">&nearr;</span></button>
+                <span class="map-note">Map link coming soon</span>
+              </div>
+            </div>
+
+            <div class="venue-block">
+              <p class="card-label">Reception &middot; <span data-format="time" data-source="reception.time">6:45 PM</span></p>
+              <p class="vb-name" data-tbc="reception.name" data-tbc-label="Venue to be confirmed">Venue to be confirmed</p>
+              <p class="vb-line" data-tbc="reception.address" data-tbc-label="Address to be confirmed">Address to be confirmed</p>
+              <div class="map-action" data-map="reception" data-label="Get directions">
+                <button class="btn-dark btn-dark--sm" type="button" disabled aria-disabled="true">Get directions <span aria-hidden="true">&nearr;</span></button>
+                <span class="map-note">Map link coming soon</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="dash-col dash-col--right">
+          <article class="card timeline-card" data-reveal>
+            <p class="card-label">Order of celebration</p>
+            <ol class="timeline" id="timeline"></ol>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         4. OUR LOVE STORY — horizontal film strip
          ========================================================= -->
     <section class="story" id="story" aria-labelledby="story-title">
       <div class="story-sticky">
@@ -159,7 +249,7 @@
     </section>
 
     <!-- =========================================================
-         4. RSVP — handmade paper on sage
+         5. RSVP — handmade paper on sage
          ========================================================= -->
     <section class="rsvp" id="rsvp" aria-labelledby="rsvp-heading">
       <div class="rsvp-paper">
@@ -248,96 +338,6 @@
             </div>
             <button class="text-btn" type="button" id="rsvp-again">Send another response</button>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================
-         5. ORDER OF CELEBRATION
-         ========================================================= -->
-    <section class="schedule" id="schedule" aria-labelledby="schedule-title">
-      <header class="sec-head" data-reveal>
-        <p class="eyebrow">The big day</p>
-        <h2 class="sec-title" id="schedule-title">Order of <em>Celebration</em></h2>
-        <div class="ornament" aria-hidden="true"><span></span><i></i><span></span></div>
-      </header>
-
-      <div class="dash">
-        <div class="dash-col dash-col--left">
-          <article class="card date-card" data-reveal>
-            <p class="card-label">Wedding date</p>
-            <div class="date-ring">
-              <svg viewBox="0 0 120 120" aria-hidden="true">
-                <circle class="ring-track" cx="60" cy="60" r="52" />
-                <circle class="ring-fill" id="ring-fill" cx="60" cy="60" r="52" />
-              </svg>
-              <div class="ring-text">
-                <span class="ring-day" id="ring-day">14</span>
-                <span class="ring-month" id="ring-month">JAN</span>
-              </div>
-            </div>
-            <p class="date-sub"><span id="ring-year">2027</span> &middot; <span id="ring-weekday">Thursday</span></p>
-            <button class="pill pill--outline" type="button" id="add-to-calendar">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>
-              Add to calendar
-            </button>
-            <a class="text-link" id="google-calendar" href="#" target="_blank" rel="noopener noreferrer">Google Calendar</a>
-          </article>
-
-          <article class="card glance-card" data-reveal>
-            <p class="card-label">At a glance</p>
-            <div class="glance-grid" id="glance-grid">
-              <div class="glance glance--rose"><strong id="glance-events">2</strong><span>Celebrations</span></div>
-              <div class="glance glance--gold"><strong data-format="time" data-source="church.time">4:00 PM</strong><span>Ceremony</span></div>
-              <div class="glance glance--sage"><strong data-format="time" data-source="reception.time">6:45 PM</strong><span>Reception</span></div>
-              <div class="glance glance--blush"><strong>IST</strong><span>India time</span></div>
-            </div>
-          </article>
-        </div>
-
-        <div class="dash-col dash-col--mid">
-          <figure class="venue-figure" data-reveal>
-            <img id="venue-img" src="assets/garden-background.webp" alt="" width="941" height="1672" loading="lazy" decoding="async" />
-          </figure>
-
-          <article class="card venue-card" data-reveal>
-            <h3 class="venue-title" data-config="church.name">St. Joseph's Church</h3>
-            <p class="venue-sub"><span data-config="church.location">Thannipuzha, Kerala</span> &middot; <span data-format="date-upper">14 JANUARY 2027</span></p>
-            <ul class="tags">
-              <li class="tag tag--rose">Holy Matrimony</li>
-              <li class="tag tag--gold">Church Ceremony</li>
-              <li class="tag tag--sage">Wedding Reception</li>
-              <li class="tag tag--blush">Thursday Evening</li>
-            </ul>
-
-            <div class="venue-block">
-              <p class="card-label">Ceremony &middot; <span data-format="time" data-source="church.time">4:00 PM</span></p>
-              <p class="vb-name" data-config="church.name">St. Joseph's Church</p>
-              <p class="vb-line" data-config="church.location">Thannipuzha, Kerala</p>
-              <p class="vb-line" data-tbc="church.address" data-tbc-label="Full address: to be confirmed">Full address: to be confirmed</p>
-              <div class="map-action" data-map="church" data-label="Get directions">
-                <button class="btn-dark btn-dark--sm" type="button" disabled aria-disabled="true">Get directions <span aria-hidden="true">&nearr;</span></button>
-                <span class="map-note">Map link coming soon</span>
-              </div>
-            </div>
-
-            <div class="venue-block">
-              <p class="card-label">Reception &middot; <span data-format="time" data-source="reception.time">6:45 PM</span></p>
-              <p class="vb-name" data-tbc="reception.name" data-tbc-label="Venue to be confirmed">Venue to be confirmed</p>
-              <p class="vb-line" data-tbc="reception.address" data-tbc-label="Address to be confirmed">Address to be confirmed</p>
-              <div class="map-action" data-map="reception" data-label="Get directions">
-                <button class="btn-dark btn-dark--sm" type="button" disabled aria-disabled="true">Get directions <span aria-hidden="true">&nearr;</span></button>
-                <span class="map-note">Map link coming soon</span>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="dash-col dash-col--right">
-          <article class="card timeline-card" data-reveal>
-            <p class="card-label">Order of celebration</p>
-            <ol class="timeline" id="timeline"></ol>
-          </article>
         </div>
       </div>
     </section>
